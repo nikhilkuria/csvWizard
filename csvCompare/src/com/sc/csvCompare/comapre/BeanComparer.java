@@ -3,7 +3,7 @@ package com.sc.csvCompare.comapre;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 
 import com.sc.csvCompare.bean.CompareOutput;
 import com.sc.csvCompare.bean.CsvBean;
@@ -38,7 +38,7 @@ public class BeanComparer {
 	private RowsCompliment fetchRowsCompliment(CsvBean expectedBean, CsvBean actualBean) {
 		RowsCompliment rowsCompliment = new RowsCompliment();
 		List<RowElement> extraRows = getMismatchRows(expectedBean,actualBean);
-		List<RowElement> missingRows = getMismatchRows(expectedBean,actualBean); 
+		List<RowElement> missingRows = getMismatchRows(actualBean,expectedBean); 
 		rowsCompliment.setExtraRows(extraRows);
 		rowsCompliment.setMissingRows(missingRows);
 		return rowsCompliment;
@@ -47,26 +47,31 @@ public class BeanComparer {
 	private List<RowElement> getMismatchRows(CsvBean expectedBean, CsvBean actualBean) {
 		List<RowElement> mismatchRows = new ArrayList<RowElement>();
 		
-		List<RowElement> actualRows = expectedBean.getRows();
+		List<RowElement> actualRows = actualBean.getRows();
 		List<RowElement> expectedRows = expectedBean.getRows();
 		
 		for (RowElement actualRowElement : actualRows ) {
 			List<String> actualRow = actualRowElement.getRowEntries();
+			boolean rowFound = false;
 			for (RowElement expectedRowElement : expectedRows) {
 				List<String> expectedRow = expectedRowElement.getRowEntries();
-				if(!CollectionUtils.disjunction(actualRow, expectedRow).isEmpty()){
-					RowElement mismatchRowElement = new RowElement();
-					mismatchRowElement.setRowEntries(actualRow);
-					mismatchRowElement.setRowHeaders(actualBean.getHeader());
-					mismatchRows.add(mismatchRowElement);
+				
+				if(CollectionUtils.disjunction(actualRow, expectedRow).isEmpty()){
+					rowFound = true;
+					break;
 				}
+			}
+			if(!rowFound){
+				RowElement mismatchRowElement = new RowElement();
+				mismatchRowElement.setRowEntries(actualRow);
+				mismatchRowElement.setRowHeaders(actualBean.getHeader());
+				mismatchRows.add(mismatchRowElement);
 			}
 		}
 		
 		return mismatchRows;
 	}
 
-	@SuppressWarnings("unchecked")
 	private HeadersCompliment validateHeaders(HeaderElement expectedHeader,
 			HeaderElement actualHeader) {
 		
@@ -77,10 +82,10 @@ public class BeanComparer {
 		headersCompliment.setMissingHeaders(new ArrayList<String>(
 				CollectionUtils.removeAll(expectedHeaders, actualHeaders)));
 		headersCompliment.setExtraHeaders(new ArrayList<String>(CollectionUtils
-				.retainAll(expectedHeaders,actualHeaders)));
+				.removeAll(actualHeaders,expectedHeaders)));
 		headersCompliment.setCommonHeaders(new ArrayList<String>(
 				CollectionUtils.intersection(expectedHeaders, actualHeaders)));
-		headersCompliment.setMissingHeaders(actualHeaders);
+		headersCompliment.setActualHeaders(actualHeaders);
 		headersCompliment.setExpectedHeaders(expectedHeaders);
 
 		return headersCompliment;
