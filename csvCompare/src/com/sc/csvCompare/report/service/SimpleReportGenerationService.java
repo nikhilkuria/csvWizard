@@ -6,21 +6,28 @@ import org.rendersnake.HtmlCanvas;
 
 import com.sc.csvCompare.bean.CompareOutput;
 import com.sc.csvCompare.config.ConfigurationsStore;
+import com.sc.csvCompare.report.helper.CommonReportHelper;
 import com.sc.csvCompare.report.helper.ReportHeaderCompareHelper;
+import com.sc.csvCompare.report.helper.ReportRowsCompareHelper;
  
 public class SimpleReportGenerationService implements ReportGenerationService {
 
 	public String generateReport(CompareOutput output) throws IOException {
-		ReportHeaderCompareHelper reportHelper = new ReportHeaderCompareHelper();
+		ReportHeaderCompareHelper reportHeaderHelper = new ReportHeaderCompareHelper();
+		ReportRowsCompareHelper reportRowsHelper = new ReportRowsCompareHelper();
+		CommonReportHelper commonReportHelper = new CommonReportHelper();
 		HtmlCanvas canvas = new HtmlCanvas();
 		
-		reportHelper.initCanvas(canvas);
+		commonReportHelper.initCanvas(canvas);
 		//Create Header Compare header
 		if(ConfigurationsStore.compareHeaders){
-		reportHelper.createHeaderComparision(canvas,output);
+		reportHeaderHelper.createHeaderComparision(canvas,output);
 		}
 		
-		reportHelper.closeCanvas(canvas);
+		reportRowsHelper.createRowsComparision(canvas,output);
+		
+		
+		commonReportHelper.closeCanvas(canvas);
 		
 		return canvas.toHtml();
 	}

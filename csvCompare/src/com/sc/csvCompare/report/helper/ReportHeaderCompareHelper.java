@@ -21,21 +21,13 @@ public class ReportHeaderCompareHelper {
 		reportHelper = new CommonReportHelper();
 	}
 	
-	public void initCanvas(HtmlCanvas canvas) throws IOException {
-		canvas
-			.html()
-				.body()
-					.table();
-		
-	}
-	
 	public void createHeaderComparision(HtmlCanvas canvas, CompareOutput output) throws IOException {
 		canvas
 			.tr()
 				.td()
 					.table();
 		
-		createHeaderForHeaderCompare(canvas);
+		reportHelper.createHeader(canvas, ReportVariables.HEADER_COMPARE_HEADER);
 		createIndexForHeaderCompare(canvas);
 		createBodyForHeaderCompare(canvas,output);
 		createSummaryForHeaderCompare(canvas,output);
@@ -123,18 +115,6 @@ public class ReportHeaderCompareHelper {
 		
 	}
 
-	private void createHeaderForHeaderCompare(HtmlCanvas canvas) throws IOException {
-		canvas
-			.tr()
-				.td()
-					.table()
-						.tr()
-							.td().content(ReportVariables.HEADER_COMPARE_HEADER)
-						._tr()
-					._table()
-				._td()
-			._tr();
-	}
 
 	private void createIndexForHeaderCompare(HtmlCanvas canvas) throws IOException {
 		canvas
@@ -157,12 +137,5 @@ public class ReportHeaderCompareHelper {
 		
 	}
 
-	public void closeCanvas(HtmlCanvas canvas) throws IOException {
-		canvas
-			._table()
-				._body()
-					._html();
-		
-	}
 
 }

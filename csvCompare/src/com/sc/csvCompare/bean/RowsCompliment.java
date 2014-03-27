@@ -1,6 +1,9 @@
 package com.sc.csvCompare.bean;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class RowsCompliment {
 	private List<RowElement> missingRows;
@@ -24,5 +27,19 @@ public class RowsCompliment {
 	}
 	public void setMismatchRows(MismatchRows mismatchRows) {
 		this.mismatchRows = mismatchRows;
+	}
+	public List<String> getListofMissingRows(){
+		List<String> missingRowsList = new ArrayList<String>();
+		for (RowElement row : getMissingRows()) {
+			missingRowsList.add(StringUtils.join(row.getRowEntries(), ","));
+		}
+		return missingRowsList;
+	}
+	public List<String> getListofExtraRows(){
+		List<String> extraRowsList = new ArrayList<String>();
+		for (RowElement row : getExtraRows()) {
+			extraRowsList.add(StringUtils.join(row.getRowEntries(), ","));
+		}
+		return extraRowsList;
 	}
 }
