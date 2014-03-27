@@ -22,7 +22,9 @@ public class ConfigurationsManager {
 
 	private static void setPropertiesForReport(Properties properties) {
 		ConfigurationsStore.reportLocation = properties.getProperty(ConfigurationConstants.REPORT_LOCATION);
-		
+		ConfigurationsStore.colorMapping = properties.getProperty(ConfigurationConstants.COLOR_MAPPING).equals(ConfigurationConstants.CONFIG_TRUE);
+		ConfigurationsStore.showCommonHeaders = properties.getProperty(ConfigurationConstants.SHOW_COMMON_HEADERS).equals(ConfigurationConstants.CONFIG_TRUE);
+		ConfigurationsStore.showCommonRows = properties.getProperty(ConfigurationConstants.SHOW_COMMON_ROWS).equals(ConfigurationConstants.CONFIG_TRUE);
 	}
 
 	private static void setPropertiesForCompare(Properties properties) {

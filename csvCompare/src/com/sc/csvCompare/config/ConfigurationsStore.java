@@ -16,4 +16,7 @@ public class ConfigurationsStore {
 	public static List<Integer> keys = null;
 	
 	public static String reportLocation;
+	public static boolean colorMapping;
+	public static boolean showCommonHeaders;
+	public static boolean showCommonRows;
 }

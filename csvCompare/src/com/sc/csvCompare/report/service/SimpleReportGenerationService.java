@@ -19,6 +19,9 @@ public class SimpleReportGenerationService implements ReportGenerationService {
 		HtmlCanvas canvas = new HtmlCanvas();
 		
 		commonReportHelper.initCanvas(canvas);
+		
+		commonReportHelper.createReportHeader(canvas);
+		
 		//Create Header Compare header
 		if(ConfigurationsStore.compareHeaders){
 		reportHeaderHelper.createHeaderComparision(canvas,output);

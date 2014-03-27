@@ -2,6 +2,8 @@ package com.sc.csvCompare.bean;
 
 import java.util.List;
 
+import com.sc.csvCompare.util.CsvCompareHelper;
+
 public class HeadersCompliment {
 
 	List<String> expectedHeaders;
@@ -9,6 +11,7 @@ public class HeadersCompliment {
 	List<String> commonHeaders;
 	List<String> missingHeaders;
 	List<String> extraHeaders;
+	
 	public List<String> getExpectedHeaders() {
 		return expectedHeaders;
 	}
@@ -39,6 +42,10 @@ public class HeadersCompliment {
 	public void setExtraHeaders(List<String> extraHeaders) {
 		this.extraHeaders = extraHeaders;
 	}
-	
-	
+	public boolean isHeadersMismatch(){
+		if(CsvCompareHelper.isNullorEmpty(missingHeaders)&&CsvCompareHelper.isNullorEmpty(extraHeaders)){
+			return false;
+		}
+			return true;
+	}		
 }

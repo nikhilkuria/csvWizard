@@ -40,9 +40,36 @@ public class BeanComparer {
 		RowsCompliment rowsCompliment = new RowsCompliment();
 		List<RowElement> extraRows = getMismatchRows(expectedBean,actualBean);
 		List<RowElement> missingRows = getMismatchRows(actualBean,expectedBean); 
+		List<RowElement> commonRows = getCommonRows(actualBean,expectedBean);
 		rowsCompliment.setExtraRows(extraRows);
 		rowsCompliment.setMissingRows(missingRows);
+		rowsCompliment.setCommonRows(commonRows);
 		return rowsCompliment;
+	}
+
+	private List<RowElement> getCommonRows(CsvBean actualBean,
+			CsvBean expectedBean) {
+		List<RowElement> commonRows = new ArrayList<RowElement>();
+		
+		List<RowElement> actualRows = actualBean.getRows();
+		List<RowElement> expectedRows = expectedBean.getRows();
+		
+		for (RowElement actualRowElement : actualRows ) {
+			List<String> actualRow = actualRowElement.getRowEntries();
+			for (RowElement expectedRowElement : expectedRows) {
+				List<String> expectedRow = expectedRowElement.getRowEntries();
+				
+				if(CollectionUtils.disjunction(actualRow, expectedRow).isEmpty()){
+					RowElement mismatchRowElement = new RowElement();
+					mismatchRowElement.setRowEntries(actualRow);
+					mismatchRowElement.setRowHeaders(actualBean.getHeader());
+					commonRows.add(mismatchRowElement);
+					break;
+				}
+			}
+		}
+		
+		return commonRows;
 	}
 
 	private List<RowElement> getMismatchRows(CsvBean expectedBean, CsvBean actualBean) {

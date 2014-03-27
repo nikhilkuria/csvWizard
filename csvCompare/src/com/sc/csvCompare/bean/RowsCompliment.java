@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.sc.csvCompare.util.CsvCompareHelper;
+
 public class RowsCompliment {
 	private List<RowElement> missingRows;
 	private List<RowElement> extraRows;
+	private List<RowElement> commonRows;
 	private MismatchRows mismatchRows;
 	
 	public List<RowElement> getMissingRows() {
@@ -41,5 +44,24 @@ public class RowsCompliment {
 			extraRowsList.add(StringUtils.join(row.getRowEntries(), ","));
 		}
 		return extraRowsList;
+	}
+	public List<String> getListofCommonRows(){
+		List<String> extraRowsList = new ArrayList<String>();
+		for (RowElement row : getCommonRows()) {
+			extraRowsList.add(StringUtils.join(row.getRowEntries(), ","));
+		}
+		return extraRowsList;
+	}
+	public boolean isRowsMismatch(){
+		if(CsvCompareHelper.isNullorEmpty(missingRows)&&CsvCompareHelper.isNullorEmpty(extraRows)){
+			return false;
+		}
+			return true;
+	}
+	public List<RowElement> getCommonRows() {
+		return commonRows;
+	}
+	public void setCommonRows(List<RowElement> commonRows) {
+		this.commonRows = commonRows;
 	}
 }
