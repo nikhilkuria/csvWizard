@@ -31,7 +31,8 @@ public class BeanComparer {
 		RowsCompliment rowsCompliment = fetchRowsCompliment(
 				expectedBean, actualBean);
 		output.setRowsCompliment(rowsCompliment);
-
+		output.setActualFileName(actualBean.getFileName());
+		output.setExpectedFileName(expectedBean.getFileName());
 		return output;
 	}
 

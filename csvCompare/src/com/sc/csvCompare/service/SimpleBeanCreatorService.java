@@ -20,6 +20,7 @@ public class SimpleBeanCreatorService implements BeanCreatorService {
 		List<RowElement> rows = csvParser.getRows();
 		csvBean.setHeader(headerElement);
 		csvBean.setRows(rows);
+		csvBean.setFileName(csvFile.getName());
 		return csvBean;
 	}
 

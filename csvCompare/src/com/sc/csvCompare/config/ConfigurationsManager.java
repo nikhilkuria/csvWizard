@@ -16,10 +16,16 @@ public class ConfigurationsManager {
 		
 		properties.load(new FileInputStream(configFile));
 		
-		setProperties(properties);
+		setPropertiesForCompare(properties);
+		setPropertiesForReport(properties);
 	}
 
-	private static void setProperties(Properties properties) {
+	private static void setPropertiesForReport(Properties properties) {
+		ConfigurationsStore.reportLocation = properties.getProperty(ConfigurationConstants.REPORT_LOCATION);
+		
+	}
+
+	private static void setPropertiesForCompare(Properties properties) {
 		
 		ConfigurationsStore.caseSensitiveContent = properties.getProperty(ConfigurationConstants.CASE_SENSITIVE_CONTENT).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.caseSensitiveHeader = properties.getProperty(ConfigurationConstants.CASE_SENSITIVE_HEADERS).equals(ConfigurationConstants.CONFIG_TRUE);

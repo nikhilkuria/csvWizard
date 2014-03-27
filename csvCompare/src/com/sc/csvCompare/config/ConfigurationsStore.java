@@ -14,4 +14,6 @@ public class ConfigurationsStore {
 	public static String csvDelimiter;
 	
 	public static List<Integer> keys = null;
+	
+	public static String reportLocation;
 }

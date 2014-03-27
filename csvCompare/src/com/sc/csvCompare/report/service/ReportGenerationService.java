@@ -6,5 +6,5 @@ import com.sc.csvCompare.bean.CompareOutput;
 
 public interface ReportGenerationService {
 
-	public void generateReport(CompareOutput output) throws IOException;
+	public String generateReport(CompareOutput output) throws IOException;
 }

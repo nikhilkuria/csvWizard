@@ -16,6 +16,7 @@ import com.sc.csvCompare.bean.HeadersCompliment;
 import com.sc.csvCompare.bean.RowsCompliment;
 import com.sc.csvCompare.config.ConfigurationsManager;
 import com.sc.csvCompare.core.CsvComparer;
+import com.sc.csvCompare.report.core.ReportGenerator;
 
 public class CsvCompareTest {
 
@@ -29,7 +30,7 @@ public class CsvCompareTest {
 		ConfigurationsManager.initializeManager(configFile);
 	}
 	
-	@Test
+	//@Test
 	public void compareHeadersTest() throws FileNotFoundException, IOException{
 		expectedFile = new File("test-resources/expected-heading-1.txt");
 		CsvComparer comparer = new CsvComparer();
@@ -74,7 +75,7 @@ public class CsvCompareTest {
 		Assert.assertEquals(headersCompliment.getMissingHeaders(), missingHeaders);
 	}
 	
-	@Test
+	//@Test
 	public void CompareRowsTest(){
 		expectedFile = new File("test-resources/expected-heading-1.txt");
 		actualFile = new File("test-resources/actual-content-1.txt");
@@ -150,6 +151,19 @@ public class CsvCompareTest {
 		
 		Assert.assertEquals(rowsCompliment.getExtraRows().get(1).getRowEntries(), extraRowTwo);
 		Assert.assertEquals(rowsCompliment.getMissingRows().get(1).getRowEntries(), missingRowTwo);
+	}
+	
+	@Test
+	public void generateReport(){
+		expectedFile = new File("test-resources/expected-heading-1.txt");
+		CsvComparer comparer = new CsvComparer();
+		ReportGenerator reportGenerator = new ReportGenerator();
+
+		CompareOutput output = null;
+		
+		actualFile = new File("test-resources/actual-heading-1.txt");
+		output = comparer.compareCsvFiles(expectedFile, actualFile);
+		reportGenerator.generateHtmlReport(output);
 	}
 	
 }
