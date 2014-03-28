@@ -11,7 +11,7 @@ public class RowsCompliment {
 	private List<RowElement> missingRows;
 	private List<RowElement> extraRows;
 	private List<RowElement> commonRows;
-	private MismatchRows mismatchRows;
+	private List<MismatchRow> mismatchRows;
 	
 	public List<RowElement> getMissingRows() {
 		return missingRows;
@@ -25,10 +25,10 @@ public class RowsCompliment {
 	public void setExtraRows(List<RowElement> extraRows) {
 		this.extraRows = extraRows;
 	}
-	public MismatchRows getMismatchRows() {
+	public List<MismatchRow> getMismatchRow() {
 		return mismatchRows;
 	}
-	public void setMismatchRows(MismatchRows mismatchRows) {
+	public void setMismatchRow(List<MismatchRow> mismatchRows) {
 		this.mismatchRows = mismatchRows;
 	}
 	public List<String> getListofMissingRows(){
@@ -53,7 +53,7 @@ public class RowsCompliment {
 		return extraRowsList;
 	}
 	public boolean isRowsMismatch(){
-		if(CsvCompareHelper.isNullorEmpty(missingRows)&&CsvCompareHelper.isNullorEmpty(extraRows)){
+		if(CsvCompareHelper.isNullorEmpty(missingRows)&&CsvCompareHelper.isNullorEmpty(extraRows)&&CsvCompareHelper.isNullorEmpty(mismatchRows)){
 			return false;
 		}
 			return true;

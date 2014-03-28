@@ -20,7 +20,7 @@ public class SimpleReportGenerationService implements ReportGenerationService {
 		
 		commonReportHelper.initCanvas(canvas);
 		
-		commonReportHelper.createReportHeader(canvas);
+		commonReportHelper.createReportHeader(canvas,output);
 		
 		//Create Header Compare header
 		if(ConfigurationsStore.compareHeaders){

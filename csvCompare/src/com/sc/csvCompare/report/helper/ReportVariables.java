@@ -17,6 +17,8 @@ public class ReportVariables {
 	public static String HEADER_EXTRA_ELEMENT_COLOR = "#04B431";
 	public static String HEADER_COMPARE_SUCCESS_MESSAGE = "The headers are similar";
 	public static final String ROWS_COMPARE_SUCCESS_MESSAGE = "The rows are similar";
+	public static String MISMATCH_ELEMENT_COLOR = "#FF704D";
+	public static String ROWS_MISMATCH_ELEMENT = "Mismatch in Values";
 	
 	public static String ROWS_COMPARE_HEADER = "Rows";
 	public static String ROWS_COMPARE_HEADER_COLOR = "#3366CC";

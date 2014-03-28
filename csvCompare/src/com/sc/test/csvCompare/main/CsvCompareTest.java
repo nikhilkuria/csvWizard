@@ -159,14 +159,14 @@ public class CsvCompareTest {
 		ReportGenerator reportGenerator = new ReportGenerator();
 
 		CompareOutput output = null;
-/*		expectedFile = new File("test-resources/expected-heading-1.txt");
-		actualFile = new File("test-resources/actual-heading-1.txt");
 		expectedFile = new File("test-resources/expected-heading-1.txt");
+		actualFile = new File("test-resources/actual-heading-1.txt");
+		/*expectedFile = new File("test-resources/expected-heading-1.txt");
 		actualFile = new File("test-resources/actual-content-1.txt");
 		expectedFile = new File("test-resources/expected-heading-1.txt");
-		actualFile = new File("test-resources/actual-content-2.txt");*/
-		expectedFile = new File("C:\\Temp\\CPT_TOOLS\\CSV_COMPARE\\MVBS_GID_Allianz_182545.csv");
-		actualFile = new File("C:\\Temp\\CPT_TOOLS\\CSV_COMPARE\\MVBS_GID_Allianz_182545-2.csv");
+		actualFile = new File("test-resources/actual-content-2.txt");
+/*		expectedFile = new File("C:\\Temp\\CPT_TOOLS\\CSV_COMPARE\\MVBS_GID_Allianz_182545.csv");
+		actualFile = new File("C:\\Temp\\CPT_TOOLS\\CSV_COMPARE\\MVBS_GID_Allianz_182545-2.csv");*/
 		output = comparer.compareCsvFiles(expectedFile, actualFile);
 		reportGenerator.generateHtmlReport(output);
 	}

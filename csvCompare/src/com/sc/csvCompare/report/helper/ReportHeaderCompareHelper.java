@@ -5,7 +5,6 @@ import static org.rendersnake.HtmlAttributesFactory.colspan;
 import static org.rendersnake.HtmlAttributesFactory.style;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.rendersnake.HtmlCanvas;
 
@@ -64,14 +63,14 @@ public class ReportHeaderCompareHelper {
 					"Missing Headers "
 							+ "("
 							+ output.getHeadersCompliment().getMissingHeaders()
-									.size() + ")", new InfoHeader());
+									.size() + ")", new InfoHeader(),false);
 			canvas._td();
 			canvas.td(style("vertical-align:top"));
 			reportHelper.createTableFromList(canvas, output
 					.getHeadersCompliment().getExtraHeaders(), "Extra Headers"
 					+ "("
 					+ output.getHeadersCompliment().getExtraHeaders().size()
-					+ ")", new InfoHeader());
+					+ ")", new InfoHeader(),false);
 			canvas._td();
 			if (ConfigurationsStore.showCommonHeaders) {
 				canvas.td(style("vertical-align:top"));
@@ -81,7 +80,7 @@ public class ReportHeaderCompareHelper {
 								+ "("
 								+ output.getHeadersCompliment()
 										.getCommonHeaders().size() + ")",
-						new InfoHeader());
+						new InfoHeader(),false);
 				canvas._td();
 			}
 		} else {
@@ -105,7 +104,7 @@ public class ReportHeaderCompareHelper {
 						"Expected Header from : "
 								+ output.getExpectedFileName())._tr();
 
-		prepareHeaderList(canvas, headersCompliment.getExpectedHeaders(),
+		reportHelper.createRowFromList(canvas, headersCompliment.getExpectedHeaders(),
 				headersCompliment.getMissingHeaders(),
 				ReportVariables.HEADER_MISSING_ELEMENT_COLOR);
 
@@ -115,26 +114,10 @@ public class ReportHeaderCompareHelper {
 				.content("Actual Header from : " + output.getActualFileName())
 				._tr();
 
-		prepareHeaderList(canvas, headersCompliment.getActualHeaders(),
+		reportHelper.createRowFromList(canvas, headersCompliment.getActualHeaders(),
 				headersCompliment.getExtraHeaders(),
 				ReportVariables.HEADER_EXTRA_ELEMENT_COLOR);
 		canvas._table().br()._td()._tr();
-
-	}
-
-	private void prepareHeaderList(HtmlCanvas canvas, List<String> masterList,
-			List<String> highLightList, String markColor) throws IOException {
-		canvas.tr();
-
-		for (String header : masterList) {
-			String color = ReportVariables.HEADER_NORMAL_COLOR;
-			if (highLightList.contains(header)) {
-				color = markColor;
-			}
-			canvas.td(bgcolor(color)).content(header);
-		}
-
-		canvas._tr();
 
 	}
 

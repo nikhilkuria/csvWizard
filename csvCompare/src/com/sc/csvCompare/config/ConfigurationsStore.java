@@ -1,5 +1,6 @@
 package com.sc.csvCompare.config;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigurationsStore {
@@ -13,7 +14,7 @@ public class ConfigurationsStore {
 	
 	public static String csvDelimiter;
 	
-	public static List<Integer> keys = null;
+	public static List<Integer> keys = new ArrayList<Integer>();
 	
 	public static String reportLocation;
 	public static boolean colorMapping;

@@ -1,6 +1,8 @@
 package com.sc.csvCompare.bean;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CsvBean {
 
@@ -26,5 +28,11 @@ public class CsvBean {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	
+	public Map<String,RowElement> getRowsMap(){
+		Map<String,RowElement> rowMap = new HashMap<String,RowElement>();
+		for (RowElement rowElement : rows) {
+			rowMap.put(rowElement.getKey(), rowElement);
+		}
+		return rowMap;
+	}
 }
