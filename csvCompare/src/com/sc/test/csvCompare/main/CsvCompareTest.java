@@ -166,7 +166,7 @@ public class CsvCompareTest {
 		expectedFile = new File("test-resources/expected-heading-1.txt");
 		actualFile = new File("test-resources/actual-content-2.txt");*/
 		expectedFile = new File("C:\\Temp\\CPT_TOOLS\\CSV_COMPARE\\MVBS_GID_Allianz_182545.csv");
-		actualFile = new File("C:\\Temp\\CPT_TOOLS\\CSV_COMPARE\\SM_SHOCK_Assets_GID_Allianz_182545.csv");
+		actualFile = new File("C:\\Temp\\CPT_TOOLS\\CSV_COMPARE\\MVBS_GID_Allianz_182545-2.csv");
 		output = comparer.compareCsvFiles(expectedFile, actualFile);
 		reportGenerator.generateHtmlReport(output);
 	}

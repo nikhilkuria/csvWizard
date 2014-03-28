@@ -10,7 +10,7 @@ public class ConfigNotFoundException extends Exception{
 	
 	@Override
 	public String getMessage() {
-		return "The configuration file has not been set.";
+		return "The configuration file has not been set. Do it via ConfigurationsManager.initializeManager()";
 	}
 	
 	
