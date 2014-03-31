@@ -4,7 +4,7 @@
 
 	<groupId>com.sc</groupId>
 	<artifactId>csvCompare</artifactId>
-	<version>0.1</version>
+	<version>2.0</version>
 	<packaging>jar</packaging>
 
 	<name>csvCompare</name>
