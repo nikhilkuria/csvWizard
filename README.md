@@ -23,24 +23,43 @@ Configuration file
 
 Has to be initialized via ConfigurationsManager.initializeManager()
 
-Will accept a file with the following format
+Will accept a file with the following format. Plus more options to customize inline
 
-HEADER_PRESENT=TRUE <br>
-COMPARE_HEADERS=TRUE <br>
-CASE_SENSITIVE_HEADERS=TRUE <br>
-CASE_SENSITIVE_CONTENT=TRUE <br>
-UNIQUE_KEY=0 <br>
-CONSIDER_ORDER=FALSE <br>
-CSV_DELIMITER=, <br>
-COLOR_MAPPING=TRUE <br>
-SHOW_COMMON_HEADERS=TRUE <br>
-SHOW_COMMON_ROWS=TRUE <br>
+#--UNIQUE ROW IDENTIFICATION--#
 
-REPORT_LOCATION=C:/Temp/CPT_TOOLS/CSV_COMPARE/report.html
+#IMPORTANT - Please chose either of option 1 and 2. 
+#If both are chosen, Only option 1 will be considered
 
+#It is alright to do a blind compare with both options disabled
+
+#---1---IDENTITY USING AN UNIQUE KEY ( primary key )
+#Used to identify an unique row like the primary key in relational db
+#Add delimiter separated header positions,
+#If a row can be identified with first and second values, UNIQUE_KEY = 1,2
+#If there is no unique key, UNIQUE_KEY = 0
+UNIQUE_KEY=1
+#---2---COMPARE ROWS WITH SAME ROW NUMBER 
+#Pretty straight forward, comapre row n in file #1 with row n in file #2
+#Set CONSIDER_ORDER=TRUE to enable and CONSIDER_ORDER=FALSE to disable
+CONSIDER_ORDER=TRUE
+
+#Set this property to TRUE if the csv has a header row. Set to false, if otherwise
+#Setting the value TRUE considers the first line as header
+COMPARE_HEADERS=TRUE
+
+#The separator in the file
+CSV_DELIMITER=,
+
+COLOR_MAPPING=TRUE
+SHOW_COMMON_HEADERS=TRUE
+SHOW_COMMON_ROWS=TRUE
+
+SHOW_LINE_NUMBERS=TRUE
+
+REPORT_LOCATION=<add report path here>
 
 --Release History--
 
 v1.0 - 27 Mar 2014
-
+v2.0 - 31 Mar 2014
 
