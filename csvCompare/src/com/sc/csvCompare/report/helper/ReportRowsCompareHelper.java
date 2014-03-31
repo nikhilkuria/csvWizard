@@ -117,14 +117,11 @@ public class ReportRowsCompareHelper {
 	}
 
 	private void createMismatchRowsSection(HtmlCanvas canvas,
-			RowsCompliment rowsCompliment) throws IOException {
-		
-		
-		
+			RowsCompliment rowsCompliment) throws IOException {	
 		canvas
 			.table()
 				.tr()
-					.td(style(reportHelper.getStyleString(new SectionInternalHederLevelOne())).colspan("10000")).content("Mismatch Headers")
+					.td(style(reportHelper.getStyleString(new SectionInternalHederLevelOne())).colspan("10000")).content("Mismatch in Values")
 				._tr();
 		prepareIndexForRowsMismatch(canvas);
 		canvas
@@ -141,10 +138,14 @@ public class ReportRowsCompareHelper {
 			List<String> highLightList;
 			highLightList = getHighLightList(expectedRow,
 					mismatchIndices);
-			reportHelper.createRowFromList(canvas, expectedRow.getRowEntries(), highLightList , ReportVariables.MISMATCH_ELEMENT_COLOR);
+			canvas
+				.table();
+			reportHelper.createRowFromList(canvas, expectedRow.getRowEntries(), highLightList , ReportVariables.MISMATCH_ELEMENT_COLOR,expectedRow.getLineNumber());
 			highLightList = getHighLightList(actualRow,
 					mismatchIndices);
-			reportHelper.createRowFromList(canvas, actualRow.getRowEntries(), highLightList , ReportVariables.MISMATCH_ELEMENT_COLOR);
+			reportHelper.createRowFromList(canvas, actualRow.getRowEntries(), highLightList , ReportVariables.MISMATCH_ELEMENT_COLOR,actualRow.getLineNumber());
+			canvas
+				._table();
 			canvas
 				.tr()
 					.td()

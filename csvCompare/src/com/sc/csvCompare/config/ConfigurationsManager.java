@@ -28,23 +28,31 @@ public class ConfigurationsManager {
 
 	private static void setPropertiesForCompare(Properties properties) {
 		
-		ConfigurationsStore.caseSensitiveContent = properties.getProperty(ConfigurationConstants.CASE_SENSITIVE_CONTENT).equals(ConfigurationConstants.CONFIG_TRUE);
-		ConfigurationsStore.caseSensitiveHeader = properties.getProperty(ConfigurationConstants.CASE_SENSITIVE_HEADERS).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.compareHeaders = properties.getProperty(ConfigurationConstants.COMPARE_HEADERS).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.headersPresent = properties.getProperty(ConfigurationConstants.HEADERS_PRESENT).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.csvDelimiter = properties.getProperty(ConfigurationConstants.CSV_DELIMITER);
 
-		List<String> keyList = Arrays.asList(properties.getProperty(ConfigurationConstants.UNIQUE_KEY).split(","));
-		
-		for (String key : keyList) {
-			int keyVal = Integer.valueOf(key);
-			if(!ConfigurationConstants.NO_UNIQUE_KEY.equals(key)){
-				keyVal--;
-				ConfigurationsStore.keys.add(keyVal);
-			}			
-		}	
+		setCompareStrategy(properties);	
 		
 		ConfigurationsStore.configFileFound = true;
+	}
+
+	private static void setCompareStrategy(Properties properties) {
+		List<String> keyList = Arrays.asList(properties.getProperty(ConfigurationConstants.UNIQUE_KEY).split(","));
+		boolean considerOrder =  properties.getProperty(ConfigurationConstants.CONSIDER_ORDER).equals(ConfigurationConstants.CONFIG_TRUE);
+		boolean uniqueKey = !keyList.contains(ConfigurationConstants.NO_UNIQUE_KEY);
+		if(uniqueKey){			
+			for (String key : keyList) {
+				int keyVal = Integer.valueOf(key);
+				if(!ConfigurationConstants.NO_UNIQUE_KEY.equals(key)){
+					keyVal--;
+					ConfigurationsStore.keys.add(keyVal);
+				}			
+			}
+			considerOrder = false;
+		}
+		ConfigurationsStore.considerOrder = considerOrder;
+		
 	}
 	
 }

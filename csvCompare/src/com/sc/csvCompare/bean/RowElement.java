@@ -11,6 +11,7 @@ public class RowElement {
 
 	private List<String> rowEntries;
 	private HeaderElement rowHeader;
+	private int lineNumber;
 
 	public List<String> getRowEntries() {
 		return rowEntries;
@@ -47,6 +48,14 @@ public class RowElement {
 	
 	public String getKey() {
 		return StringUtils.join(getKeyAsList(),ConfigurationsStore.csvDelimiter);
+	}
+
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
 	}
 
 }

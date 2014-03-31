@@ -7,7 +7,7 @@ public class ConfigurationConstants {
 	public static final String CASE_SENSITIVE_HEADERS = "CASE_SENSITIVE_HEADERS";
 	public static final String CASE_SENSITIVE_CONTENT = "CASE_SENSITIVE_CONTENT";
 	public static final String UNIQUE_KEY = "UNIQUE_KEY";
-	public static final String COMPARE_ORDER = "CONSIDER_ORDER";
+	public static final String CONSIDER_ORDER = "CONSIDER_ORDER";
 	public static final String CSV_DELIMITER = "CSV_DELIMITER";
 	public static final String SHOW_COMMON_ROWS = "SHOW_COMMON_ROWS";
 	public static final String SHOW_COMMON_HEADERS = "SHOW_COMMON_HEADERS";

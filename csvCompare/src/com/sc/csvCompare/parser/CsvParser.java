@@ -50,13 +50,17 @@ public class CsvParser {
 	public List<RowElement> getRows() throws IOException {
 		List<RowElement> rows = new ArrayList<RowElement>();
 		String row;
+		int lineNumber = 0;
 		HeaderElement headerElement = null;
 		initBufferedReader(this.csvFile);
 		if(ConfigurationsStore.headersPresent){
+			lineNumber++;
 			headerElement = getHeaderRow();
 		}
 		while ((row = csvBufferedReader.readLine()) != null) {
+			lineNumber++;
 			RowElement rowElement = getRowElement(row, headerElement);
+			rowElement.setLineNumber(lineNumber);
 			rows.add(rowElement);
 		}
 		return rows;

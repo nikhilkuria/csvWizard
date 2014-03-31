@@ -15,6 +15,7 @@ public class ConfigurationsStore {
 	public static String csvDelimiter;
 	
 	public static List<Integer> keys = new ArrayList<Integer>();
+	public static boolean considerOrder;
 	
 	public static String reportLocation;
 	public static boolean colorMapping;
