@@ -15,8 +15,8 @@ import com.sc.csvCompare.bean.MismatchRow;
 import com.sc.csvCompare.bean.RowElement;
 import com.sc.csvCompare.bean.RowsCompliment;
 import com.sc.csvCompare.config.ConfigurationsStore;
-import com.sc.csvCompare.report.style.InfoHeader;
-import com.sc.csvCompare.report.style.RowsCompareHeaderStyle;
+import com.sc.csvCompare.report.style.SecondLevelHeader;
+import com.sc.csvCompare.report.style.SectionHeaderStyle;
 import com.sc.csvCompare.report.style.SectionInternalHederLevelOne;
 import com.sc.csvCompare.report.style.StandardMessage;
 
@@ -35,7 +35,7 @@ public class ReportRowsCompareHelper {
 		canvas.tr().td().table();
 
 		reportHelper.createHeader(canvas, ReportVariables.ROWS_COMPARE_HEADER,
-				new RowsCompareHeaderStyle());
+				new SectionHeaderStyle());
 		if (output.getRowsCompliment().isRowsMismatch()) {
 			createBodyForRowsCompare(canvas, output);
 		}
@@ -59,13 +59,13 @@ public class ReportRowsCompareHelper {
 					"Missing Rows "
 							+ "("
 							+ output.getRowsCompliment().getMissingRows()
-									.size() + ")", new InfoHeader(), false);
+									.size() + ")", new SecondLevelHeader(), false);
 			canvas._td();
 			canvas.td();
 			reportHelper.createTableFromList(canvas, new ArrayList<String>(),
 					"Extra Rows" + "("
 							+ output.getRowsCompliment().getExtraRows().size()
-							+ ")", new InfoHeader(), false);
+							+ ")", new SecondLevelHeader(), false);
 			canvas._td();
 			if (ConfigurationsStore.showCommonRows) {
 				canvas.td();
@@ -73,7 +73,7 @@ public class ReportRowsCompareHelper {
 						new ArrayList<String>(), "Common Rows"
 								+ "("
 								+ output.getRowsCompliment().getCommonRows()
-										.size() + ")", new InfoHeader(), false);
+										.size() + ")", new SecondLevelHeader(), false);
 				canvas._td();
 			}
 		} else {

@@ -1,5 +1,7 @@
 package com.sc.csvCompare.report.style;
 
+import com.sc.csvCompare.report.helper.ReportVariables;
+
 public class ReportHeaderStyle implements SectionStyle{
 
 	@Override
@@ -10,7 +12,7 @@ public class ReportHeaderStyle implements SectionStyle{
 	@Override
 	public String getFontColor() {
 		// TODO Auto-generated method stub
-		return "#FF6600";
+		return ReportVariables.LIGHT_COLOR_ORANGE;
 	}
 
 	@Override

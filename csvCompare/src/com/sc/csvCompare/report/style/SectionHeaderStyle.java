@@ -2,18 +2,17 @@ package com.sc.csvCompare.report.style;
 
 import com.sc.csvCompare.report.helper.ReportVariables;
 
-public class GeneralInfo implements SectionStyle {
+public class SectionHeaderStyle implements SectionStyle{
 
 	@Override
-	public String getFontSize() {
-		// TODO Auto-generated method stub
-		return "13";
+	public String getFontSize() {		
+		return "26";
 	}
 
 	@Override
 	public String getFontColor() {
 		// TODO Auto-generated method stub
-		return ReportVariables.GENERAL_INFO_GRAY;
+		return ReportVariables.LIGHT_COLOR_BLUE;
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class GeneralInfo implements SectionStyle {
 	@Override
 	public String getFontWeight() {
 		// TODO Auto-generated method stub
-		return "ITALIC";
+		return "normal";
 	}
 
 	@Override

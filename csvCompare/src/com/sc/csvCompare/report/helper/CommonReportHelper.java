@@ -14,7 +14,7 @@ import org.rendersnake.HtmlCanvas;
 import com.sc.csvCompare.bean.CompareOutput;
 import com.sc.csvCompare.bean.RowElement;
 import com.sc.csvCompare.config.ConfigurationsStore;
-import com.sc.csvCompare.report.style.GeneralInfo;
+import com.sc.csvCompare.report.style.GeneralInfoMessage;
 import com.sc.csvCompare.report.style.SectionInternalHederLevelOne;
 import com.sc.csvCompare.report.style.SectionStyle;
 import com.sc.csvCompare.util.CsvCompareConstants;
@@ -94,7 +94,7 @@ public class CommonReportHelper {
 							.td(style(ReportCssHelper.fileNameStyle)).content("Actual File Name : "+output.getActualFileName())
 						._tr()
 						.tr()
-							.td(style(ReportCssHelper.getStyleString(new GeneralInfo()))).content(getCompareStrategy())
+							.td(style(ReportCssHelper.getStyleString(new GeneralInfoMessage()))).content(getCompareStrategy())
 						._tr()
 					._table()
 					.hr()
@@ -124,7 +124,7 @@ public class CommonReportHelper {
 		canvas.tr();
 		
 		for (String header : masterList) {
-			String color = ReportVariables.HEADER_NORMAL_COLOR;
+			String color = ReportVariables.WHITE_COLOR;
 			if (highLightList.contains(header)) {
 				color = markColor;
 			}
@@ -149,7 +149,7 @@ public class CommonReportHelper {
 		canvas.tr();
 		
 		for (String header : masterList) {
-			String color = ReportVariables.HEADER_NORMAL_COLOR;
+			String color = ReportVariables.WHITE_COLOR;
 			if (highLightList.contains(header)) {
 				color = markColor;
 			}
@@ -164,7 +164,7 @@ public class CommonReportHelper {
 			if (ConfigurationsStore.showLineNumbers) {
 				canvas.td()
 						.span(style(ReportCssHelper
-								.getStyleString(new GeneralInfo())))
+								.getStyleString(new GeneralInfoMessage())))
 						.content("---line no " + lineNumber)._td();
 			}
 		canvas._tr();
@@ -182,12 +182,12 @@ public class CommonReportHelper {
 					.td(style(ReportCssHelper.getStyleString(sectionStyle)).colspan("10000")).content(header)
 				._tr();
 		for (RowElement rowElement : entries) {
-			createRowFromList(canvas, rowElement.getRowEntries(), null, ReportVariables.HEADER_NORMAL_COLOR,rowElement.getLineNumber());
+			createRowFromList(canvas, rowElement.getRowEntries(), null, ReportVariables.WHITE_COLOR,rowElement.getLineNumber());
 		}
 		if(entries.isEmpty() && showEmptyMessage) {
 			canvas
 				.tr()
-					.td(style(ReportCssHelper.getStyleString(new GeneralInfo()))).content("none..")
+					.td(style(ReportCssHelper.getStyleString(new GeneralInfoMessage()))).content("none..")
 				._tr();
 		}
 		canvas

@@ -11,9 +11,9 @@ import org.rendersnake.HtmlCanvas;
 import com.sc.csvCompare.bean.CompareOutput;
 import com.sc.csvCompare.bean.HeadersCompliment;
 import com.sc.csvCompare.config.ConfigurationsStore;
-import com.sc.csvCompare.report.style.GeneralInfo;
-import com.sc.csvCompare.report.style.HeaderCompareHeaderStyle;
-import com.sc.csvCompare.report.style.InfoHeader;
+import com.sc.csvCompare.report.style.GeneralInfoMessage;
+import com.sc.csvCompare.report.style.SectionHeaderStyle;
+import com.sc.csvCompare.report.style.SecondLevelHeader;
 import com.sc.csvCompare.report.style.SectionInternalHederLevelOne;
 import com.sc.csvCompare.report.style.StandardMessage;
 
@@ -34,7 +34,7 @@ public class ReportHeaderCompareHelper {
 
 		reportHelper.createHeader(canvas,
 				ReportVariables.HEADER_COMPARE_HEADER,
-				new HeaderCompareHeaderStyle());
+				new SectionHeaderStyle());
 		if (headersCompliment.isHeadersMismatch()) {
 			if (ConfigurationsStore.colorMapping) {
 				createIndexForHeaderCompare(canvas);
@@ -63,14 +63,14 @@ public class ReportHeaderCompareHelper {
 					"Missing Headers "
 							+ "("
 							+ output.getHeadersCompliment().getMissingHeaders()
-									.size() + ")", new InfoHeader(),false);
+									.size() + ")", new SecondLevelHeader(),false);
 			canvas._td();
 			canvas.td(style("vertical-align:top"));
 			reportHelper.createTableFromList(canvas, output
 					.getHeadersCompliment().getExtraHeaders(), "Extra Headers"
 					+ "("
 					+ output.getHeadersCompliment().getExtraHeaders().size()
-					+ ")", new InfoHeader(),false);
+					+ ")", new SecondLevelHeader(),false);
 			canvas._td();
 			if (ConfigurationsStore.showCommonHeaders) {
 				canvas.td(style("vertical-align:top"));
@@ -80,7 +80,7 @@ public class ReportHeaderCompareHelper {
 								+ "("
 								+ output.getHeadersCompliment()
 										.getCommonHeaders().size() + ")",
-						new InfoHeader(),false);
+						new SecondLevelHeader(),false);
 				canvas._td();
 			}
 		} else {
@@ -99,7 +99,7 @@ public class ReportHeaderCompareHelper {
 				.table()
 				.tr()
 				.td(colspan("10000").style(
-						ReportCssHelper.getStyleString(new GeneralInfo())))
+						ReportCssHelper.getStyleString(new GeneralInfoMessage())))
 				.content(
 						"Expected Header from : "
 								+ output.getExpectedFileName())._tr();
@@ -110,7 +110,7 @@ public class ReportHeaderCompareHelper {
 
 		canvas.tr()
 				.td(colspan("10000").style(
-						ReportCssHelper.getStyleString(new GeneralInfo())))
+						ReportCssHelper.getStyleString(new GeneralInfoMessage())))
 				.content("Actual Header from : " + output.getActualFileName())
 				._tr();
 

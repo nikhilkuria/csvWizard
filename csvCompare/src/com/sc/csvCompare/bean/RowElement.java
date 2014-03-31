@@ -33,7 +33,7 @@ public class RowElement {
 		return rowHeader.isHeaderPresent();	
 	}
 
-	public List<String> getKeyAsList() {
+	private List<String> getKeyAsList() {
 		List<String> keys = new ArrayList<String>();
 		if(ConfigurationsStore.keys.isEmpty()){
 			keys = getRowEntries();
@@ -47,6 +47,9 @@ public class RowElement {
 	}
 	
 	public String getKey() {
+		if(ConfigurationsStore.considerOrder){
+			return String.valueOf(getLineNumber());
+		}
 		return StringUtils.join(getKeyAsList(),ConfigurationsStore.csvDelimiter);
 	}
 

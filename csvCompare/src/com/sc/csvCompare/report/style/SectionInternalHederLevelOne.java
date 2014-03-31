@@ -13,7 +13,7 @@ public class SectionInternalHederLevelOne implements SectionStyle {
 	@Override
 	public String getFontColor() {
 		// TODO Auto-generated method stub
-		return ReportVariables.HEADER_NORMAL_COLOR_DARK_BLUE;
+		return ReportVariables.DARK_COLOR_BLUE;
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class SectionInternalHederLevelOne implements SectionStyle {
 	@Override
 	public String getFontWeight() {
 		// TODO Auto-generated method stub
-		return "bold";
+		return "BOLD";
 	}
 
 	@Override
