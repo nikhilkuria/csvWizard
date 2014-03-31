@@ -21,7 +21,6 @@ public class ConfigurationsManager {
 
 	private static void setPropertiesForReport(Properties properties) {
 		ConfigurationsStore.reportLocation = properties.getProperty(ConfigurationConstants.REPORT_LOCATION);
-		ConfigurationsStore.colorMapping = properties.getProperty(ConfigurationConstants.COLOR_MAPPING).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.showCommonHeaders = properties.getProperty(ConfigurationConstants.SHOW_COMMON_HEADERS).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.showCommonRows = properties.getProperty(ConfigurationConstants.SHOW_COMMON_ROWS).equals(ConfigurationConstants.CONFIG_TRUE);	
 		ConfigurationsStore.showLineNumbers = properties.getProperty(ConfigurationConstants.SHOW_LINE_NUMBERS).equals(ConfigurationConstants.CONFIG_TRUE);
@@ -30,7 +29,6 @@ public class ConfigurationsManager {
 	private static void setPropertiesForCompare(Properties properties) {
 		
 		ConfigurationsStore.compareHeaders = properties.getProperty(ConfigurationConstants.COMPARE_HEADERS).equals(ConfigurationConstants.CONFIG_TRUE);
-		ConfigurationsStore.headersPresent = properties.getProperty(ConfigurationConstants.HEADERS_PRESENT).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.csvDelimiter = properties.getProperty(ConfigurationConstants.CSV_DELIMITER);
 
 		setCompareStrategy(properties);	

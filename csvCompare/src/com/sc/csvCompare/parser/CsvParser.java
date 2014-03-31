@@ -34,9 +34,7 @@ public class CsvParser {
 		List<String> headerList = null;
 		String header;
 		initBufferedReader(this.csvFile);
-		headerElement.setHeaderPresent(ConfigurationsStore.headersPresent);
-
-		if (ConfigurationsStore.headersPresent) {
+		if (ConfigurationsStore.compareHeaders) {
 			header = csvBufferedReader.readLine();
 				headerList = Arrays.asList(header
 						.split(ConfigurationsStore.csvDelimiter));
@@ -53,7 +51,7 @@ public class CsvParser {
 		int lineNumber = 0;
 		HeaderElement headerElement = null;
 		initBufferedReader(this.csvFile);
-		if(ConfigurationsStore.headersPresent){
+		if(ConfigurationsStore.compareHeaders){
 			lineNumber++;
 			headerElement = getHeaderRow();
 		}

@@ -36,13 +36,9 @@ public class ReportHeaderCompareHelper {
 				ReportVariables.HEADER_COMPARE_HEADER,
 				new SectionHeaderStyle());
 		if (headersCompliment.isHeadersMismatch()) {
-			if (ConfigurationsStore.colorMapping) {
-				createIndexForHeaderCompare(canvas);
-			}
+			createIndexForHeaderCompare(canvas);
 		}
-		if (ConfigurationsStore.colorMapping) {
-			createBodyForHeaderCompare(canvas, output);
-		}
+		createBodyForHeaderCompare(canvas, output);
 		createSummaryForHeaderCompare(canvas, output);
 
 		canvas._table().hr()._td()._tr();
