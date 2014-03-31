@@ -25,39 +25,42 @@ Has to be initialized via ConfigurationsManager.initializeManager()
 
 Will accept a file with the following format. Plus more options to customize inline
 
---UNIQUE ROW IDENTIFICATION--
+---------------------------------------------------------------------------------------------------------------------
 
-IMPORTANT - Please chose either of option 1 and 2. 
-If both are chosen, Only option 1 will be considered
+--UNIQUE ROW IDENTIFICATION-- 
 
-It is alright to do a blind compare with both options disabled
+IMPORTANT - Please chose either of option 1 and 2. <br>
+If both are chosen, Only option 1 will be considered <br>
 
----1---IDENTITY USING AN UNIQUE KEY ( primary key )
-Used to identify an unique row like the primary key in relational db
-Add delimiter separated header positions,
-If a row can be identified with first and second values, UNIQUE_KEY = 1,2
-If there is no unique key, UNIQUE_KEY = 0
-UNIQUE_KEY=1
----2---COMPARE ROWS WITH SAME ROW NUMBER 
-Pretty straight forward, comapre row n in file 1 with row n in file 2
-Set CONSIDER_ORDER=TRUE to enable and CONSIDER_ORDER=FALSE to disable
-CONSIDER_ORDER=TRUE
+It is alright to do a blind compare with both options disabled <br>
 
-Set this property to TRUE if the csv has a header row. Set to false, if otherwise
-Setting the value TRUE considers the first line as header
-COMPARE_HEADERS=TRUE
+---1---IDENTITY USING AN UNIQUE KEY ( primary key ) <br>
+Used to identify an unique row like the primary key in relational db <br>
+Add delimiter separated header positions, <br>
+If a row can be identified with first and second values, UNIQUE_KEY = 1,2 <br>
+If there is no unique key, UNIQUE_KEY = 0 <br>
+UNIQUE_KEY=1 <br>
+---2---COMPARE ROWS WITH SAME ROW NUMBER  <br>
+Pretty straight forward, comapre row n in file 1 with row n in file 2 <br>
+Set CONSIDER_ORDER=TRUE to enable and CONSIDER_ORDER=FALSE to disable <br>
+CONSIDER_ORDER=TRUE <br>
 
-The separator in the file
-CSV_DELIMITER=,
+Set this property to TRUE if the csv has a header row. Set to false, if otherwise <br>
+Setting the value TRUE considers the first line as header <br>
+COMPARE_HEADERS=TRUE <br>
 
-COLOR_MAPPING=TRUE
-SHOW_COMMON_HEADERS=TRUE
-SHOW_COMMON_ROWS=TRUE
+The separator in the file <br>
+CSV_DELIMITER=, <br>
 
-SHOW_LINE_NUMBERS=TRUE
+COLOR_MAPPING=TRUE <br>
+SHOW_COMMON_HEADERS=TRUE <br>
+SHOW_COMMON_ROWS=TRUE <br>
 
-REPORT_LOCATION=<Add location here>
+SHOW_LINE_NUMBERS=TRUE <br>
 
+REPORT_LOCATION=<Add location here> <br>
+
+---------------------------------------------------------------------------------------------------------------------
 
 --Release History--
 
