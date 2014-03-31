@@ -2,6 +2,8 @@ package com.sc.csvCompare.report.helper;
 
 import java.util.Map;
 
+import com.sc.csvCompare.report.style.SectionStyle;
+
 public class ReportCssHelper {
 
 	public static String reportHeaderStyle = "color:#FF6600;text-align:center;font-weight:bold;font-size:30";
@@ -14,6 +16,14 @@ public class ReportCssHelper {
 			styleStringBuilder.append(propertyName + ":" + styleMap.get(propertyName) + ";");
 		}
 		return styleStringBuilder.toString();
+	}
+
+
+	public static String getStyleString(SectionStyle headerStyle) {
+		String style = "color:"+headerStyle.getFontColor()+";text-align:"+headerStyle.getAlignment()+
+				";font-style:"+headerStyle.getFontWeight()+";font-size:"+headerStyle.getFontSize()+
+				";vertical-align:"+headerStyle.getVerticalAlign();
+		return style;
 	}
 	
 }

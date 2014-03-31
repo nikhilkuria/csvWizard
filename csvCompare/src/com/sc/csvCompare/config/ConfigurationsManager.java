@@ -24,6 +24,7 @@ public class ConfigurationsManager {
 		ConfigurationsStore.colorMapping = properties.getProperty(ConfigurationConstants.COLOR_MAPPING).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.showCommonHeaders = properties.getProperty(ConfigurationConstants.SHOW_COMMON_HEADERS).equals(ConfigurationConstants.CONFIG_TRUE);
 		ConfigurationsStore.showCommonRows = properties.getProperty(ConfigurationConstants.SHOW_COMMON_ROWS).equals(ConfigurationConstants.CONFIG_TRUE);	
+		ConfigurationsStore.showLineNumbers = properties.getProperty(ConfigurationConstants.SHOW_LINE_NUMBERS).equals(ConfigurationConstants.CONFIG_TRUE);
 	}
 
 	private static void setPropertiesForCompare(Properties properties) {

@@ -11,6 +11,7 @@ import org.rendersnake.HtmlCanvas;
 import com.sc.csvCompare.bean.CompareOutput;
 import com.sc.csvCompare.bean.HeadersCompliment;
 import com.sc.csvCompare.config.ConfigurationsStore;
+import com.sc.csvCompare.report.style.GeneralInfo;
 import com.sc.csvCompare.report.style.HeaderCompareHeaderStyle;
 import com.sc.csvCompare.report.style.InfoHeader;
 import com.sc.csvCompare.report.style.SectionInternalHederLevelOne;
@@ -53,8 +54,7 @@ public class ReportHeaderCompareHelper {
 				.td()
 				.table()
 				.tr()
-				.td(style(reportHelper
-						.getStyleString(new SectionInternalHederLevelOne())))
+				.td(style(ReportCssHelper.getStyleString(new SectionInternalHederLevelOne())))
 				.content("Summary")._tr().tr();
 		if (output.getHeadersCompliment().isHeadersMismatch()) {
 			canvas.td(style("vertical-align:top"));
@@ -84,7 +84,7 @@ public class ReportHeaderCompareHelper {
 				canvas._td();
 			}
 		} else {
-			canvas.td(style(reportHelper.getStyleString(new StandardMessage())))
+			canvas.td(style(ReportCssHelper.getStyleString(new StandardMessage())))
 					.content(ReportVariables.HEADER_COMPARE_SUCCESS_MESSAGE);
 		}
 		canvas._tr()._table()._td()._tr();
@@ -99,7 +99,7 @@ public class ReportHeaderCompareHelper {
 				.table()
 				.tr()
 				.td(colspan("10000").style(
-						reportHelper.getStyleString(new InfoHeader())))
+						ReportCssHelper.getStyleString(new GeneralInfo())))
 				.content(
 						"Expected Header from : "
 								+ output.getExpectedFileName())._tr();
@@ -110,7 +110,7 @@ public class ReportHeaderCompareHelper {
 
 		canvas.tr()
 				.td(colspan("10000").style(
-						reportHelper.getStyleString(new InfoHeader())))
+						ReportCssHelper.getStyleString(new GeneralInfo())))
 				.content("Actual Header from : " + output.getActualFileName())
 				._tr();
 

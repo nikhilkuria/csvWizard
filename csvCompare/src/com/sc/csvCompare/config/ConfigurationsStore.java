@@ -21,4 +21,5 @@ public class ConfigurationsStore {
 	public static boolean colorMapping;
 	public static boolean showCommonHeaders;
 	public static boolean showCommonRows;
+	public static boolean showLineNumbers;
 }

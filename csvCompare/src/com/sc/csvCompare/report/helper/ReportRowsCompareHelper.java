@@ -51,8 +51,7 @@ public class ReportRowsCompareHelper {
 				.td()
 				.table()
 				.tr()
-				.td(style(reportHelper
-						.getStyleString(new SectionInternalHederLevelOne())))
+				.td(style(ReportCssHelper.getStyleString(new SectionInternalHederLevelOne())))
 				.content("Summary")._tr().tr();
 		if (output.getRowsCompliment().isRowsMismatch()) {
 			canvas.td();
@@ -78,7 +77,7 @@ public class ReportRowsCompareHelper {
 				canvas._td();
 			}
 		} else {
-			canvas.td(style(reportHelper.getStyleString(new StandardMessage())))
+			canvas.td(style(ReportCssHelper.getStyleString(new StandardMessage())))
 					.content(ReportVariables.ROWS_COMPARE_SUCCESS_MESSAGE);
 		}
 		canvas._tr()._table()._td()._tr();
@@ -94,22 +93,22 @@ public class ReportRowsCompareHelper {
 			createMismatchRowsSection(canvas,rowsCompliment);
 		}
 		
-		reportHelper.createTableFromList(canvas,
-				rowsCompliment.getListofMissingRows(), "Missing Rows",
+		reportHelper.createTableFromRowList(canvas,
+				rowsCompliment.getMissingRows(), "Missing Rows",
 				new SectionInternalHederLevelOne(), true);
 		canvas.br();
 		canvas._td()._tr();
 
 		canvas.tr().td();
-		reportHelper.createTableFromList(canvas,
-				rowsCompliment.getListofExtraRows(), "Extra Rows",
+		reportHelper.createTableFromRowList(canvas,
+				rowsCompliment.getExtraRows(), "Extra Rows",
 				new SectionInternalHederLevelOne(), true);
 		canvas.br();
 		canvas._td()._tr();
 		if (ConfigurationsStore.showCommonRows) {
 			canvas.tr().td();
-			reportHelper.createTableFromList(canvas,
-					rowsCompliment.getListofCommonRows(), "Common Rows",
+			reportHelper.createTableFromRowList(canvas,
+					rowsCompliment.getCommonRows(), "Common Rows",
 					new SectionInternalHederLevelOne(), true);
 			canvas.br();
 			canvas._td()._tr();
@@ -121,15 +120,10 @@ public class ReportRowsCompareHelper {
 		canvas
 			.table()
 				.tr()
-					.td(style(reportHelper.getStyleString(new SectionInternalHederLevelOne())).colspan("10000")).content("Mismatch in Values")
+					.td(style(ReportCssHelper.getStyleString(new SectionInternalHederLevelOne())).colspan("10000")).content("Mismatch in Values")
 				._tr();
 		prepareIndexForRowsMismatch(canvas);
-		canvas
-		.tr()
-			.td()
-				.br()
-			._td()
-		._tr();
+
 		for (MismatchRow mismatchRow : rowsCompliment.getMismatchRow()) {
 			
 			RowElement actualRow = mismatchRow.getActualRow();
