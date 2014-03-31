@@ -23,24 +23,10 @@ Configuration file
 
 Has to be initialized via ConfigurationsManager.initializeManager()
 
-Will accept a file with the following format
-
-HEADER_PRESENT=TRUE <br>
-COMPARE_HEADERS=TRUE <br>
-CASE_SENSITIVE_HEADERS=TRUE <br>
-CASE_SENSITIVE_CONTENT=TRUE <br>
-UNIQUE_KEY=0 <br>
-CONSIDER_ORDER=FALSE <br>
-CSV_DELIMITER=, <br>
-COLOR_MAPPING=TRUE <br>
-SHOW_COMMON_HEADERS=TRUE <br>
-SHOW_COMMON_ROWS=TRUE <br>
-
-REPORT_LOCATION=C:/Temp/CPT_TOOLS/CSV_COMPARE/report.html
-
+check file for the  format. Plus more options to customize inline
 
 --Release History--
 
-v1.0 - 27 Mar 2014
-
+v1.0 - 27 Mar 2014 <br>
+v2.0 - 31 Mar 2014
 
