@@ -11,7 +11,7 @@ import com.sc.csvCompare.report.service.ReportGenerationService;
 import com.sc.csvCompare.report.service.SimpleReportGenerationService;
 
 public class ReportGenerator {
-
+	
 	public void generateHtmlReport(CompareOutput output){
 		ReportGenerationService reportService = new SimpleReportGenerationService();
 		String report = null;
@@ -29,12 +29,20 @@ public class ReportGenerator {
 	}
 
 	private void printReport(String report) throws IOException {
-		File reportFile = new File(ConfigurationsStore.reportLocation);
+		File reportFile = new File(getReportLocation());
 		FileWriter fw = new FileWriter(reportFile);
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write(report);
 		bw.close();		
 		
+	}
+
+	public static String getReportLocation() {
+		return ConfigurationsStore.reportLocation;
+	}
+
+	public void setReportLocation(String reportLocation) {
+		ConfigurationsStore.reportLocation = reportLocation;
 	}
 	
 }
