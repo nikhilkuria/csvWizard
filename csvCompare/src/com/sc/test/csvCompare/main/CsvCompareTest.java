@@ -11,12 +11,12 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sc.csvCompare.bean.CompareOutput;
-import com.sc.csvCompare.bean.HeadersCompliment;
-import com.sc.csvCompare.bean.RowsCompliment;
-import com.sc.csvCompare.config.ConfigurationsManager;
-import com.sc.csvCompare.core.CsvComparer;
-import com.sc.csvCompare.report.core.ReportGenerator;
+import com.sc.csvWizard.bean.CompareOutput;
+import com.sc.csvWizard.bean.HeadersCompliment;
+import com.sc.csvWizard.bean.RowsCompliment;
+import com.sc.csvWizard.config.ConfigurationsManager;
+import com.sc.csvWizard.core.CsvComparer;
+import com.sc.csvWizard.report.core.ReportGenerator;
 
 public class CsvCompareTest {
 
