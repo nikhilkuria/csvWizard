@@ -1,4 +1,0 @@
-heading1,heading2,heading3,heading4
-one,two,thre,four
-ek,do,teen,char
-onnu,randu,moonu,nalu

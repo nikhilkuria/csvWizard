@@ -1,7 +1,7 @@
-csvCompare
+csvWizard
 ==========
 
-csvCompare comapares two .csv files or any delimited files. 
+csvWizard comapares two .csv files or any delimited files. 
 
 The changes can be printed out to an html report.
 
@@ -13,7 +13,7 @@ It is a library and looks better with a web front end.
 
 Two major entry points
 
-1) CsvComparer
+1) csvWizardr
     Can take in two files and give a comparision report in the form of a CompareOutput object
 
 2) ReportGenerator
