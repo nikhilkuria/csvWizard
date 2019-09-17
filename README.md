@@ -1,4 +1,4 @@
-##csvWizard
+## csvWizard
 
 csvWizard comapares two .csv files or any delimited files. 
 
@@ -8,7 +8,7 @@ The comparision and report is configurable via a configuration file.
 
 It is a library and looks better with a web front end. 
 
-###Usage Details
+### Usage Details
 
 Two major entry points
 
@@ -24,7 +24,7 @@ Has to be initialized via `ConfigurationsManager.initializeManager()`
 
 check file for the  format. Plus more options to customize inline
 
-###Release History
+### Release History
 
 v1.0 - 27 Mar 2014 
 v2.0 - 31 Mar 2014
